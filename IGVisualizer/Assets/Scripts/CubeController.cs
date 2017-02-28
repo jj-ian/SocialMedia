@@ -17,8 +17,12 @@ public class CubeController : MonoBehaviour {
 		topLevelData data = JsonUtility.FromJson<topLevelData> (json);
 		Debug.Log (data.status);
 		Debug.Log (data.more_available);
-		foreach (items item in data.items) {
-			string imgURL = item.images.low_resolution.url;
+
+		int randIdx = Random.Range (0, data.items.Count);
+		Debug.Log ("random idx " + randIdx);
+
+		//foreach (items item in data.items) {
+		string imgURL = data.items[randIdx].images.low_resolution.url;
 			Debug.Log (imgURL);
 
 			Texture2D tex;
@@ -29,7 +33,7 @@ public class CubeController : MonoBehaviour {
 			wwwImg.LoadImageIntoTexture(tex);
 			GetComponent<Renderer>().material.mainTexture = tex;
 
-		}
+		//}
 	
 	}
 	
